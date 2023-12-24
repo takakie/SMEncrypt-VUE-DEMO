@@ -36,4 +36,20 @@ const router = new VueRouter({
   routes
 })
 
+router.beforeEach((to, from, next) => {
+  // 检查 localStorage 中是否存在 token
+  const token = localStorage.getItem('token')
+
+  if (!token && to.path !== '/Login') {
+    // 如果不存在 token 并且目标路由不是登录页面，则重定向到登录页面
+    next('/Login')
+  } 
+  else if (token && to.path == '/Login'){
+    next('/Home')
+  }
+  else {
+    // 否则，正常跳转
+    next()
+  }
+})
 export default router

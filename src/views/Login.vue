@@ -40,7 +40,7 @@ export default {
     this.axios.get('/getPublicKey').then((resp) =>{
         let data = resp.data;
         if(data.code==200){
-          localStorage.setItem('publicKey', data.data.publicKey);
+          sessionStorage.setItem('publicKey', data.data.publicKey);
         } else{
           this.$message({
             message: "获取公钥失败",
@@ -56,13 +56,13 @@ export default {
     toLogin() {
       //数据加密
       this.loginForm.password = this.tempPassword
-      console.log("tempPassword:" +  this.loginForm.password)
-      let publicKey = localStorage.getItem("publicKey")
+      this.tempPassword = ""
+      let publicKey = sessionStorage.getItem("publicKey")
       if(publicKey != null){
         this.loginForm.password = encryptSM2(this.loginForm.password, publicKey)
         SM4Data = generateSM4KeyPair(SM4Data)
-        localStorage.setItem('secretKey', SM4Data.key)
-        localStorage.setItem('iv', SM4Data.iv)
+        sessionStorage.setItem('secretKey', SM4Data.key)
+        sessionStorage.setItem('iv', SM4Data.iv)
         this.loginForm.secretKey = encryptSM2(SM4Data.key, publicKey)
         this.loginForm.iv = encryptSM2(SM4Data.iv, publicKey)
         //生成SM4密钥并加密
@@ -80,7 +80,7 @@ export default {
         let data = resp.data;
         if(data.code==200){
           this.loginForm = data.data;
-          localStorage.setItem('token', data.data.token)
+          sessionStorage.setItem('token', data.data.token)
           console.log(data.data)
           this.$message({
             message: '登陆成功',
@@ -88,8 +88,8 @@ export default {
           });
           this.$router.push({path:'/Home'})
         } else{
-          localStorage.removeItem('secretKey')
-          localStorage.removeItem('iv')
+          sessionStorage.removeItem('secretKey')
+          sessionStorage.removeItem('iv')
           this.$message({
             message: '登陆失败',
             type:'error'

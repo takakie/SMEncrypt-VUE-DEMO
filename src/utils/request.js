@@ -9,7 +9,7 @@ axios.defaults.baseURL = 'http://localhost:8080'; // 设置默认的API地址
 axios.interceptors.request.use(config => {
     // 检查请求的 URL 是否是登录接口
     if (config.url !== '/user/login') {
-        const token = localStorage.getItem('token')
+        const token = sessionStorage.getItem('token')
         if (token) {
             config.headers.token = token // 将token添加到请求头
         }
@@ -26,17 +26,9 @@ axios.interceptors.request.use(config => {
             data = data.slice(0, -1);
         } 
     if (config.method === 'post' && config.data) {
-
-         console.log("XXXXXXXXXX----------post-----------------------------")
          let dataString = JSON.stringify(config.data);
          console.log("dataString: "+ dataString)
          data += ('?' + dataString)
-    //     data += '?'
-    //     for (let key in config.data) {
-    //         data += (key + "=" +  config.data[key]+ "&")
-    //     }
-    //     //删除多余的&
-    //     data = data.slice(0, -1);
     } 
     let timestamp = Date.now()
     config.headers['timestamp'] = timestamp

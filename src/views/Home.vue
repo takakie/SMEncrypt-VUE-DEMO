@@ -2,7 +2,7 @@
   <body id="poster">
     <el-form class="home-container" label-position="left" label-width="0px">
       <h3 class="home_title">
-        主页面
+        已认证
         <el-button @click="toGetApiTest()">GET接口测试</el-button>
       </h3>
       <el-form-item label="">
@@ -35,8 +35,8 @@ export default {
     methods: {
       toGetApiTest() {
         this.homeForm.phoneNumber = this.tempPhomeNumber
-        SM4Data.key = localStorage.getItem("secretKey")
-        SM4Data.iv = localStorage.getItem("iv")
+        SM4Data.key = sessionStorage.getItem("secretKey")
+        SM4Data.iv = sessionStorage.getItem("iv")
         SM4Data.originalData = this.homeForm.phoneNumber
         encryptSM4(SM4Data)
         this.homeForm.phoneNumber = SM4Data.encryptedData

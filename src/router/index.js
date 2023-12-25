@@ -37,8 +37,8 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  // 检查 localStorage 中是否存在 token
-  const token = localStorage.getItem('token')
+  // 检查 sessionStorage 中是否存在 token
+  const token = sessionStorage.getItem('token')
 
   if (!token && to.path !== '/Login') {
     // 如果不存在 token 并且目标路由不是登录页面，则重定向到登录页面

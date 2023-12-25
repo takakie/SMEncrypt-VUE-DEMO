@@ -25,11 +25,12 @@ axios.interceptors.request.use(config => {
             //删除多余的&
             data = data.slice(0, -1);
         } 
-    if (config.method === 'post') {
+    if (config.method === 'post' && config.data) {
+
          console.log("XXXXXXXXXX----------post-----------------------------")
          let dataString = JSON.stringify(config.data);
-
          console.log("dataString: "+ dataString)
+         data += ('?' + dataString)
     //     data += '?'
     //     for (let key in config.data) {
     //         data += (key + "=" +  config.data[key]+ "&")
@@ -37,15 +38,11 @@ axios.interceptors.request.use(config => {
     //     //删除多余的&
     //     data = data.slice(0, -1);
     } 
-
-    console.log("config.method:" + config.method)
     let timestamp = Date.now()
     config.headers['timestamp'] = timestamp
     data += '$'
     console.log(data + timestamp)
     config.headers['sign'] =  digestSM3(data + timestamp)
-
-    
     return config;
 }, error => {
     return Promise.reject(error);

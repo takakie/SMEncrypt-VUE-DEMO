@@ -11,6 +11,7 @@
     "buffer": "^6.0.3",
     "core-js": "^3.8.3",
     "element-ui": "^2.15.14",
+    "gm-crypto": "^0.1.12",
     "vue": "^2.6.14",
     "vue-axios": "^3.5.2",
     "vue-router": "^3.5.1",

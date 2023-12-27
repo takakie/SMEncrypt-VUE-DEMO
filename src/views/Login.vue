@@ -3,7 +3,6 @@
     <el-form class="login-container" label-position="left" label-width="0px">
       <h3 class="login_title">
         系统登陆
-        <el-button @click="toRegister()">点我注册</el-button>
       </h3>
       <el-form-item label="">
         <el-input type="text" v-model="loginForm.userName" autocomplete="off" placeholder="账号"></el-input>

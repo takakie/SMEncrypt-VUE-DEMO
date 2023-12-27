@@ -24,8 +24,8 @@ axios.interceptors.request.use(config => {
             }
             //删除多余的&
             data = data.slice(0, -1);
-        } 
-    if (config.method === 'post' && config.data) {
+    } 
+    if (config.method === 'post' && (typeof config.data) === 'object') {
          let dataString = JSON.stringify(config.data);
          console.log("dataString: "+ dataString)
          data += ('?' + dataString)
@@ -33,7 +33,6 @@ axios.interceptors.request.use(config => {
     let timestamp = Date.now()
     config.headers['timestamp'] = timestamp
     data += '$'
-    console.log(data + timestamp)
     config.headers['sign'] =  digestSM3(data + timestamp)
     return config;
 }, error => {

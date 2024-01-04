@@ -3,7 +3,7 @@ import axios from 'axios'
 import { digestSM3 } from '@/utils/encrypto/sm3'
 
 axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
-axios.defaults.baseURL = 'http://localhost:8080'; // 设置默认的API地址
+axios.defaults.baseURL = 'http://localhost:18080'; // 设置默认的API地址
 
 // 请求拦截器，每次发送请求前运行
 axios.interceptors.request.use(config => {

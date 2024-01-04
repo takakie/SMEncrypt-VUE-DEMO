@@ -2,7 +2,7 @@
   <body id="poster">
     <el-form class="login-container" label-position="left" label-width="0px">
       <h3 class="login_title">
-        系统登陆
+        国密加密系统登陆
       </h3>
       <el-form-item label="">
         <el-input type="text" v-model="loginForm.userName" autocomplete="off" placeholder="账号"></el-input>
@@ -110,6 +110,9 @@ export default {
 
 <style>
 #poster{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-position: center;
   height: 100%;
   width: 100%;

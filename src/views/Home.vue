@@ -14,9 +14,6 @@
       <el-form-item label="">
         <el-input type="label" v-model="email" autocomplete="off" placeholder="点击获取显示邮件" readonly></el-input>
       </el-form-item>
-      <!-- <el-form-item style="width: 100%;">
-        <el-button type="primary" style="width: 100%;background: #505458;border: none;" @click="toLogin">登陆</el-button>
-      </el-form-item> -->
     </el-form>
   </body>
 </template>

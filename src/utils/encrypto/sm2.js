@@ -9,9 +9,9 @@ var Buffer = require('buffer/').Buffer
 // console.log(SM2Pair)
 
 let SM2Data = {
-  publicKey: '04c83eed01847c9b9c985dacb433a700c7d5131235223f11e1102f288011d949ebf8263d412a0a2f06b6f40d216fd27f79d5fbb579a9a9ee7654cc8a31c455047b',
-  privateKey: 'f5f0cfcbde0e4ca6a7395f201b09954cedd77def6fe1391d52d2ca83f3188bd8',
-  originalData: 'admin123',
+  publicKey: '',
+  privateKey: '',
+  originalData: '',
   encryptedData: '',
   decryptedData: ''
 }

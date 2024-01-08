@@ -53,6 +53,11 @@ export default {
   methods: {
 
     toLogin() {
+      //表单非空校验
+      if (!this.loginForm.userName || !this.tempPassword) {
+        this.$message.error('账号和密码不能为空');
+        return;
+      }
       //数据加密
       this.loginForm.password = this.tempPassword
       this.tempPassword = ""

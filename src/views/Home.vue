@@ -35,6 +35,11 @@ export default {
     },
     methods: {
       toGetApiTest() {
+        //表单非空校验
+        if (!this.homeForm.nickName || !this.tempPhomeNumber) {
+          this.$message.error('昵称和手机号不能为空');
+          return;
+        }
         this.homeForm.phoneNumber = this.tempPhomeNumber
         SM4Data.key = sessionStorage.getItem("secretKey")
         SM4Data.iv = sessionStorage.getItem("iv")
